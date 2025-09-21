@@ -4,30 +4,57 @@ This template system allows you to easily convert Markdown files to professional
 
 ## Quick Start
 
-1. **Copy the template**: Start with `template.md` and rename it to your desired filename
-2. **Edit your content**: Modify the YAML frontmatter and content as needed
-3. **Convert to PDF**: Run the conversion script
+### Using the Convert Script
 
+The project now includes both Windows batch files and cross-platform shell scripts:
+
+**Windows:**
 ```cmd
-# Convert using default settings
+# Convert using Windows batch script
 convert.bat myfile.md
 
-# Convert with table of contents
+# Convert with table of contents  
 convert.bat myfile.md myfile.pdf --toc
 
 # Convert template.md (if no arguments provided)
 convert.bat
 ```
 
+**Linux/macOS/Windows (with Git Bash or WSL):**
+```bash
+# Convert using cross-platform shell script
+./convert.sh myfile.md
+
+# Convert with table of contents
+./convert.sh myfile.md myfile.pdf --toc
+
+# Show help and list available files
+./convert.sh
+```
+
+Both scripts automatically:
+- Detect and use bibliography files (`refs.bib`)
+- Detect and use citation style files (`apa.csl`)
+- Choose the best available PDF engine
+- Provide helpful error messages
+
+1. **Copy the template**: Start with `template.md` and rename it to your desired filename
+2. **Edit your content**: Modify the YAML frontmatter and content as needed
+3. **Convert to PDF**: Run the appropriate conversion script for your platform
+
 ## Files in This Template
 
 | File | Purpose |
 |------|---------|
 | `template.md` | Template markdown file with example content and YAML frontmatter |
-| `convert.bat` | Main conversion script (Windows batch file) |
+| `convert.bat` | Windows conversion script (batch file) |
+| `convert.sh` | Cross-platform conversion script (Linux/macOS/Windows with Git Bash) |
+| `setup.bat` | Automated setup script for Windows |
+| `setup.sh` | Automated setup script for Linux/macOS |
 | `refs.bib` | Bibliography file for citations |
 | `apa.csl` | APA citation style file |
 | `config.txt` | Configuration reference and options |
+| `REQUIREMENTS.md` | Detailed list of all dependencies and installation instructions |
 | `README.md` | This documentation file |
 
 ## Usage Examples
@@ -108,9 +135,34 @@ def hello_world():
     print("Hello, World!")
 ```
 
-## Prerequisites
+## Quick Setup
 
-You need the following software installed:
+### Automated Setup (Recommended)
+
+For a completely automated setup experience, use the provided setup scripts:
+
+#### Windows
+```cmd
+# Run the setup script (will install dependencies automatically)
+setup.bat
+```
+
+#### Linux/macOS
+```bash
+# Make the setup script executable and run it
+chmod +x setup.sh
+./setup.sh
+```
+
+The setup scripts will:
+- Check for existing installations
+- Install Pandoc, LaTeX distribution, and Git
+- Verify the installation
+- Test the converter with a sample document
+
+### Manual Prerequisites
+
+If you prefer manual installation, you need:
 
 1. **Pandoc** - [Download from pandoc.org](https://pandoc.org/installing.html)
 2. **LaTeX distribution** (for PDF generation):
@@ -118,14 +170,39 @@ You need the following software installed:
    - **macOS**: MacTeX
    - **Linux**: TeX Live
 
-### Quick Installation (Windows)
+For detailed dependency information, see [REQUIREMENTS.md](REQUIREMENTS.md).
 
+### Quick Manual Installation
+
+#### Windows
 ```cmd
-# Install pandoc via chocolatey (if you have chocolatey)
-choco install pandoc
+# Using Chocolatey (recommended)
+choco install pandoc miktex git
 
-# Install MiKTeX
-# Download from: https://miktex.org/download
+# Using Windows Package Manager
+winget install pandoc miktex git
+
+# Or download manually from:
+# Pandoc: https://pandoc.org/installing.html  
+# MiKTeX: https://miktex.org/download
+```
+
+#### Linux
+```bash
+# Ubuntu/Debian
+sudo apt update && sudo apt install pandoc texlive-latex-base texlive-latex-extra git
+
+# Fedora
+sudo dnf install pandoc texlive-scheme-basic git
+
+# Arch Linux
+sudo pacman -S pandoc texlive-core texlive-latexextra git
+```
+
+#### macOS
+```bash
+# Using Homebrew
+brew install pandoc mactex git
 ```
 
 ## Troubleshooting
@@ -184,10 +261,30 @@ Pandoc supports filters for additional functionality:
 
 ## Creating New Documents
 
-1. Copy `template.md` to a new filename: `copy template.md mydocument.md`
+1. Copy `template.md` to a new filename: 
+   - Windows: `copy template.md mydocument.md`
+   - Linux/macOS: `cp template.md mydocument.md`
 2. Edit the YAML frontmatter with your document information
 3. Replace the content with your writing
-4. Run `convert.bat mydocument.md` to generate the PDF
+4. Convert to PDF:
+   - Windows: `convert.bat mydocument.md`
+   - Linux/macOS: `./convert.sh mydocument.md`
+
+## Getting Started After Cloning
+
+When you clone or download this repository to a new computer:
+
+1. **Run the setup script** for your platform:
+   - Windows: Double-click `setup.bat` or run from command prompt
+   - Linux/macOS: `chmod +x setup.sh && ./setup.sh`
+
+2. **Test the installation**:
+   - Windows: `convert.bat template.md`
+   - Linux/macOS: `./convert.sh template.md`
+
+3. **Start creating documents** using the template system
+
+The setup scripts will handle all dependency installation and configuration automatically.
 
 ## Support
 

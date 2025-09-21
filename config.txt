@@ -1,0 +1,42 @@
+# Pandoc Configuration File
+# This file contains default settings for the Markdown to PDF converter
+# You can modify these settings to customize your output
+
+# Default pandoc options (used by convert.bat)
+DEFAULT_ENGINE=xelatex
+USE_CITEPROC=true
+DEFAULT_BIBLIOGRAPHY=refs.bib
+DEFAULT_CSL=apa.csl
+
+# LaTeX packages to include by default
+# Add these to your markdown YAML frontmatter under header-includes:
+HEADER_INCLUDES=\
+  - \usepackage{setspace}\
+  - \usepackage{fancyhdr}\
+  - \usepackage{graphicx}\
+  - \usepackage{hyperref}\
+  - \usepackage{amsmath}\
+  - \usepackage{amssymb}
+
+# Page layout defaults
+GEOMETRY=margin=1in
+FONTSIZE=12pt
+LINESTRETCH=1.5
+DOCUMENTCLASS=article
+
+# Available PDF engines:
+# - xelatex (recommended, supports Unicode)
+# - pdflatex (faster, limited Unicode support)
+# - lualatex (good Unicode support, slower)
+
+# Available citation styles (place .csl files in the same directory):
+# - apa.csl (APA style)
+# - chicago.csl (Chicago style)
+# - ieee.csl (IEEE style)
+# - mla.csl (MLA style)
+# Download more from: https://github.com/citation-style-language/styles
+
+# Common pandoc filters you might want to install:
+# - pandoc-crossref (for cross-references)
+# - pandoc-citeproc (built-in with newer pandoc versions)
+# - pandoc-include (for including other files)

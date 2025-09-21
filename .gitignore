@@ -1,0 +1,48 @@
+# Generated PDF files
+*.pdf
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# Node modules (if using any JS tools)
+node_modules/
+
+# Python cache (if using any Python tools)
+__pycache__/
+*.pyc
+*.pyo
+
+# Personal notes or drafts
+draft*.md
+personal*.md
+scratch*.md
